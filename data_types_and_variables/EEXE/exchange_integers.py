@@ -1,3 +1,4 @@
+import PIL
 number_a = int(input())
 number_b = int(input())
 
