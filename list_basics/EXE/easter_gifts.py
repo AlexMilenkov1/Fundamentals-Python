@@ -1,5 +1,4 @@
 gift_names = input().split()
-none_count = 0
 
 while True:
     command = input().split()
@@ -14,7 +13,7 @@ while True:
                     gift_names[i] = 'None'
 
     elif command[0] == 'Required':
-        if int(command[2]) <= len(gift_names) - 1:
+        if len(gift_names) - 1 > int(command[2]) >= 0:
             gift_names[int(command[2])] = command[1]
 
     elif command[0] == 'JustInCase':
