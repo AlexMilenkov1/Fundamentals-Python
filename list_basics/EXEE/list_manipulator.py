@@ -50,16 +50,26 @@ while True:
 
         if command[2] == 'even':
             while count > 0:
-                for element in working_list:
-                    if element % 2 == 0:
-                        count_list.append(element)
+                for even_num in working_list:
+                    if even_num % 2 == 0:
+                        count_list.append(even_num)
                         count -= 1
+                else:
+                    break
         else:
             reversed_list = working_list[::-1]
-            for element in reversed_list:
-                if element % 2 != 0:
-                    count_list.append(element)
-                    count -= 1
+            while count > 0:
+                for element in reversed_list:
+                    if element % 2 != 0:
+                        count_list.append(element)
+                        count -= 1
+                else:
+                    break
 
         if len(count_list) > len(working_list):
             print('Invalid count')
+        else:
+            if len(count_list) == 0:
+                print('[]')
+            else:
+                print(count_list)
