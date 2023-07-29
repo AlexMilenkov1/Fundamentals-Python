@@ -1,10 +1,8 @@
 import re
 
-numbers = input()
-
-pattern = r'(^|(?<=\s))-?([0][1-9][0-9]*)(\.\d+)?($|(?=\s))'
-
-matches = re.finditer(pattern, numbers)
-
-for match in matches:
-    print(match.group(), end=' ')
+dates_match = input()
+# pattern = re.compile(r"(^|(?<=\s)-?([0]|[1-9][0-9]*)(\.\d+)?($|(?=\s)))")
+pattern = re.compile(r"(^|(?<=\s))-?([0]|[1-9][0-9]*)(\.\d+)?($|(?=\s))")
+matches = pattern.finditer(dates_match)
+for show in matches:
+    print(show[0], end=" ")
