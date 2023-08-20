@@ -11,6 +11,7 @@ for num in numbers:  # find all greater than average
 
 if len(greater_than_average) == 0:
     print('No')
+
 elif len(greater_than_average) <= 5:
     sorted_result = sorted(greater_than_average, reverse=True)
     result = [str(string) for string in sorted_result]

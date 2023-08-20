@@ -1,11 +1,3 @@
-def check_for_distribution(rich_people, wealth, money):
-    the_richest_person = max(rich_people)
-
-    if the_richest_person - money < wealth:
-        return False
-    return True
-
-
 def find_the_wealthiest(people, wealth):
     equal_wealth__list = []
     the_wealthiest_people = []
@@ -18,24 +10,30 @@ def find_the_wealthiest(people, wealth):
 
     sorted_wealthy_people = sorted(the_wealthiest_people, reverse=True)
 
-    no_distribution = False
+    interation = 0
 
     for rich_person in sorted_wealthy_people:
-        while all(element != wealth for element in poor_people):
             for poor_person in poor_people:
-
                 get_money_from_rich = wealth - poor_person
-                result = check_for_distribution(sorted_wealthy_people, wealth, get_money_from_rich)
+                if interation == 0:
+                    index = poor_people.index(poor_person)
+                    get_rich_index = sorted_wealthy_people.index(rich_person)
 
-                if result:
-                        index = poor_people.index(poor_person)
-                        poor_people[index] += get_money_from_rich
+                    if rich_person - get_money_from_rich < wealth:
+                        break
+                    else:
                         rich_person -= get_money_from_rich
+                        sorted_wealthy_people[get_rich_index] -= get_money_from_rich
+                        poor_people[index] += get_money_from_rich
 
-                        if rich_person - get_money_from_rich < wealth:
-                            break
-                else:
-                    return 'No equal distribution possible'
+
+    final_result = poor_people + sorted_wealthy_people[::-1]
+
+    if all(element >= wealth for element in final_result):
+        return final_result
+    else:
+        return 'No equal distribution possible'
+
 
 
 population = [int(number) for number in input().split(', ')]
